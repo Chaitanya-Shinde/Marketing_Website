@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { CheckCircle, ArrowRight, Zap, Search, MessageSquare, ArrowDown } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { hover, motion } from "framer-motion";
+import { useDarkMode } from "../context/DarkModeContext";
+
 
 const HowItWorks = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const { darkMode } = useDarkMode(); // Access dark mode state
+
 
   const steps = [
     {
@@ -26,7 +30,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="w-full py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className={`w-full py-16 ${darkMode ? "bg-gradient-to-b from-gray-800 to-black": "bg-gradient-to-b from-gray-50 to-white"} `}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#E8C999]">
@@ -53,13 +57,13 @@ const HowItWorks = () => {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <div
-                  className={`bg-white rounded-xl p-6 shadow-md transition-all duration-300 h-full w-[80%] ${
+                  className={`${darkMode? "bg-gray-700" : "bg-white"}  rounded-xl p-6 shadow-md transition-all duration-300 h-full w-[80%] ${
                     hoveredIndex === index ? "shadow-xl transform -translate-y-1" : ""
                   }`}
                 >
                   <div className="flex flex-col items-center">
                     {/* Step Number */}
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-b from-amber-100 to-[#E8C999] text-white font-bold text-xl mb-6">
+                    <div className={`flex items-center justify-center w-12 h-12 rounded-full ${darkMode ? "bg-gradient-to-b from-gray-800 to-black text-white": "bg-gradient-to-b from-amber-100 to-[#E8C999] text-[#8E1616]" } font-bold text-xl mb-6`}>
                       {index + 1}
                     </div>
 
@@ -67,15 +71,15 @@ const HowItWorks = () => {
                     <div
                       className={`p-4 rounded-full mb-6 transition-colors duration-300 ${
                         hoveredIndex === index
-                          ? "bg-gradient-to-b from-amber-100 to-[#E8C999] text-[#8E1616]"
+                          ? `bg-gradient-to-b from-amber-100 to-[#E8C999] ${darkMode ? "text-black" : "text-[#8E1616]"}`
                           : "bg-gray-100 text-gray-700"
                       }`}
                     >
                       {step.icon}
                     </div>
 
-                    <h3 className="text-lg md:text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-600 text-center">{step.description}</p>
+                    <h3 className={`text-lg md:text-xl font-bold mb-3 ${hoveredIndex ==index ? `${darkMode ? "text-[#E8C999]" : " text-[#8E1616]"}` : `${darkMode ? "text-white" : " text-[#8E1616]"}`} `}>{step.title}</h3>
+                    <p className={` text-center ${hoveredIndex ==index ? `${darkMode ? "text-[#E8C999]" : " text-[#8E1616]"}` : `${darkMode ? "text-white" : " text-[#8E1616]"}`} `}>{step.description}</p>
                   </div>
                 </div>
 
