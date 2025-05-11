@@ -50,8 +50,9 @@ const ContactForm = () => {
       }`}
     >
       <section className="w-full md:w-1/2 pt-10 md:py-10 px-4 flex justify-center">
+     
         <img
-          src="src/assets/contact_us.jpg"
+          src="https://i.ibb.co/zWnr66x4/contact-us.jpg"
           className="w-full h-60 md:h-full object-cover object-bottom rounded-t-md md:rounded-l-lg"
           alt="Contact us"
         />

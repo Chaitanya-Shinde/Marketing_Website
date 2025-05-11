@@ -5,7 +5,7 @@ const Hero = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   return (
     <section className=" relative w-screen h-screen  flex flex-col justify-center items-center text-center bg-gray-500 text-white ">
-      <img src="src\assets\hero2.jpg" className=" w-full h-full object-cover"/>
+      <img src="https://i.ibb.co/WpxgRgyz/hero2.jpg" className=" w-full h-full object-cover"/>
       <button
         onClick={toggleDarkMode}
         className="absolute top-5 right-5 bg-[#E8C999] text-black px-4 py-2 rounded-full font-semibold hover:bg-[#f2d9b3] transition"
